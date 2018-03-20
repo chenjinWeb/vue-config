@@ -9,10 +9,13 @@ Vue.config.productionTip = false;
 
 import MintUI from "mint-ui"
 import elementUI from "element-ui"
+import Vant from "vant"
 Vue.use(MintUI);
 Vue.use(elementUI);
+Vue.use(Vant);
 import 'mint-ui/lib/style.css';
 import 'element-ui/lib/theme-chalk/index.css';
+import 'vant/lib/vant-css/index.css'
 
 //全局使用组件
 import filter from './filter';
