@@ -7,6 +7,7 @@
           首页
         </div>
         <el-checkbox v-model="checked">备选项</el-checkbox>
+        <div @click="message()">点击弹窗</div>
       </div>
     </div>
 
@@ -26,7 +27,7 @@
 
   import {maxArr,getBeforeDate,comparearr,comparearrdes} from "../../utils"
 
-  import {Toast,Loadmore} from "mint-ui";
+  import {Toast,Loadmore,MessageBox} from "mint-ui";
 
   Vue.component(Loadmore.name, Loadmore);
 
@@ -59,6 +60,9 @@
         this.indexsale_().then((res)=>{
           console.info(res)
         })
+      },
+      message(){
+        MessageBox.alert("aaaa")
       }
 
     }
