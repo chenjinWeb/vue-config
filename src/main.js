@@ -17,11 +17,13 @@ import 'mint-ui/lib/style.css';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'vant/lib/vant-css/index.css'
 
-//全局使用组件
+//全局使用过滤器，组件，自定义指令
 import filter from './filter';
 import component from './component';
+import directive from "./directive"
 filter(Vue);
 component(Vue);
+directive(Vue);
 
 /* eslint-disable no-new */
 new Vue({

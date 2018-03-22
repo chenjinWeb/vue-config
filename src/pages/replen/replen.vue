@@ -5,9 +5,7 @@
 
     <div class="content" margin-header>
       <div class="scroll-content" margin-tabbar>
-        <div class="replen">
-          补货
-        </div>
+        <y-search @search="search"></y-search>
       </div>
     </div>
 
@@ -35,7 +33,7 @@
     name:"replen",
     data(){
       return {
-
+        name:"111"
       }
     },
     watch:{
@@ -57,6 +55,9 @@
       ...mapMutations({
 
       }),
+      search(name){
+        console.info(name)
+      }
 
     }
   }

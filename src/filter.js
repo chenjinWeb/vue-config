@@ -3,10 +3,17 @@ import {formatDate, moneyNum, formatNum} from './utils';
 
 export default function (Vue) {
 
+  Vue.filter('int',function (val){
+    return parseInt(val)
+  })
+
   Vue.filter('json', function (value) {
     return JSON.stringify(value)
   })
 
+  /**
+   * 123.45 => 123.00
+   */
   Vue.filter('number', function (value, suffix) {
     if (isNaN(parseInt(value))) {
       return value;
@@ -14,6 +21,9 @@ export default function (Vue) {
     return moneyNum(value, suffix);
   })
 
+  /**
+   * 123=>一二三
+   */
   Vue.filter('formatNum', function (value) {
     if (isNaN(parseInt(value))) {
       return value;
@@ -21,6 +31,9 @@ export default function (Vue) {
     return formatNum(value);
   })
 
+  /**
+   * 13701756015=> 137****6015
+   */
   Vue.filter('confusePhone', function (value) {
     if (isNaN(parseInt(value)) || String(value).length !== 11) {
       return value;
@@ -29,19 +42,14 @@ export default function (Vue) {
   })
 
   /**
-   * 1000=>1,000
+   * 1000=>1,000  千分位
    */
-  Vue.filter('thoundnum',function (num){
+  Vue.filter('thousand',function (num){
     if((num+"").trim()==""){
-
       return"";
-
     }
-
     if(isNaN(num)){
-
       return"";
-
     }
 
     num = num+"";
@@ -85,7 +93,7 @@ export default function (Vue) {
   })
 
   /**
-   * yyyy-MM-dd HH:mm:ss (周w)默认 w周
+   * yyyy-MM-dd (周w)默认 w周
    */
   Vue.filter('date', function (value, format) {
     if (typeof value !== 'undefined') {
@@ -100,6 +108,9 @@ export default function (Vue) {
     }
   })
 
+  /**
+   * yyyy-MM-dd HH:mm:ss (周w)默认 w周
+   */
   Vue.filter('dates', function (value, format) {
     if (typeof value !== 'undefined') {
       !format && (format = "yyyy-MM-dd HH:mm:ss");
@@ -112,7 +123,9 @@ export default function (Vue) {
       return ''
     }
   })
-
+  /**
+   * HH:mm:ss (周w)默认 w周
+   */
   Vue.filter('times', function (value, format) {
     if (typeof value !== 'undefined') {
       !format && (format = "HH:mm:ss");
@@ -125,7 +138,9 @@ export default function (Vue) {
       return ''
     }
   })
-
+  /**
+   * 转换成秒
+   */
   Vue.filter('formatSeconds', function (value) {
     var theTime = parseInt(value);// 秒
     var theTime1 = 0;// 分

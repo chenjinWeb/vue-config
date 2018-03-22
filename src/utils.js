@@ -194,6 +194,7 @@ const comparearr = function (property){
       return value1 - value2;
     }
   }
+
   //大到小
 const comparearrdes = function (property){
   return function(a,b){
